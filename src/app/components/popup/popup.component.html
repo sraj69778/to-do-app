@@ -1,0 +1,61 @@
+<div class="add-note-popup">
+    <div class="card add-note-form">
+        <div class="cross-icon" style="position: absolute;right: 0;cursor: pointer;" (click)="onClickCancelButton()">
+            <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/cancel.png" alt="cancel" />
+        </div>
+        <div class="card-body">
+            <form [formGroup]="addNotesForm" class="mt-4 form-container" style="padding-left: 10%;padding-right: 10%;"
+                (ngSubmit)="onSubmit()">
+
+                <div class="summary-form-control">
+                    <label class="mt-2">Title/Summary: <span style="color: red;">*</span></label>
+                    <input class="form-control mt-2" type="text" formControlName="title" placeholder="Title/Summary">
+                    <small
+                        *ngIf="addNotesForm.get('title')?.errors?.['required'] && addNotesForm.get('title')?.touched">
+                        *Title/Summary is
+                        required</small>
+                </div>
+
+                <div class="description-form-control mt-4">
+                    <label class="mt-2" for="textArea">Add description: <span style="color: red;">*</span></label>
+                    <textarea class="form-control mt-2" id="textArea" rows="11"
+                        formControlName="description"></textarea>
+                    <small *ngIf="addNotesForm.get('description')?.invalid && addNotesForm.get('description')?.touched">
+                        *Description is
+                        required</small>
+                </div>
+
+                <div class="status-form-control row mt-4">
+
+                    <div class="col-md-4 col-sm-12 mt-2">
+                        <label for="startDate">Start Date: <span style="color: red;">*</span></label>
+                        <input class="form-control mt-2" type="date" [min]="dateToday" id="startDate"
+                            [(ngModel)]="dateStart" formControlName="startDate">
+                        <small *ngIf="addNotesForm.get('startDate')?.invalid && addNotesForm.get('startDate')?.touched">
+                            *Please select start date</small>
+                    </div>
+                    <div class="col-md-4 col-sm-12 mt-2">
+                        <label for="endDate">End Date: <span style="color: red;">*</span></label>
+                        <input class="form-control mt-2" type="date" [min]="dateStart? dateStart:dateToday" id="endDate"
+                            formControlName="endDate">
+                        <small *ngIf="addNotesForm.get('endDate')?.invalid && addNotesForm.get('endDate')?.touched">
+                            *Please select end date</small>
+                    </div>
+                    <div class="col-md-4 col-sm-12 mt-2">
+                        <label for="endDate">Select Status: <span style="color: red;">*</span></label>
+                        <select class="form-control mt-2" formControlName="status" formControlName="status">
+                            <option [value]="option.status" *ngFor="let option of notesStatus">{{option.status}}
+                            </option>
+                        </select>
+                        <small *ngIf="addNotesForm.get('status')?.invalid && addNotesForm.get('status')?.touched">
+                            *Please select status</small>
+                    </div>
+                </div>
+
+                <!-- submit -->
+                <input class="btn btn-outline-dark" type="submit" value="Add Note" [disabled]="addNotesForm.invalid">
+            </form>
+
+        </div>
+    </div>
+</div>

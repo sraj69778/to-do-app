@@ -1,0 +1,43 @@
+.add-note-popup {
+    width: 100vw;
+    height: 100vh;
+    background-color: #d3d3d3;
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    z-index: 55;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+label {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.add-note-form {
+    z-index: 1000;
+    width: 50%;
+    padding-bottom: 3%;
+}
+
+/* .summary-form-control input {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    font-size: 20px;
+    font-weight: bold;
+} */
+
+small {
+    color: red;
+}
+
+input[type="submit"]{
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    margin-top: 30px;
+}

@@ -1,0 +1,61 @@
+.main-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    /* height: 180px; */
+    /* border: 2px solid black; */
+    padding: 2% 5%;
+
+
+
+}
+
+.add-note {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.add-note div {
+    display: flex;
+    cursor: pointer;
+    border: 2px solid #d3d3d3;
+    padding: 10px;
+    text-align: center;
+}
+.add-note div:hover{
+    background-color: #E0E0E0;
+}
+
+.add-note h2:hover {
+    cursor: pointer;
+}
+.cards {
+
+    position: relative;
+}
+
+.completed {
+    border: 1px solid rgb(25, 135, 84)
+}
+
+.toDo {
+    border: 1px solid black;
+}
+
+.inProgress {
+    border: 1px solid rgb(13, 110, 253);
+}
+.completed-moreInfo {
+    color:  rgb(25, 135, 84)
+}
+
+.toDo-moreInfo {
+    color: black;
+}
+
+.inProgress-moreInfo {
+    color:  rgb(13, 110, 253);
+}

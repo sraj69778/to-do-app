@@ -1,0 +1,14 @@
+header {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 2%
+}
+
+p {
+    font-weight: bold;
+    font-size: 25px;
+    
+}

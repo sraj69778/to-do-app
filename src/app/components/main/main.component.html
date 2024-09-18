@@ -1,0 +1,84 @@
+<div class="container-fluid main-container">
+
+    <section class="add-note">
+        <h2 class="me-4">Total Records: {{notesArray.length}}</h2>
+        <div (click)="openAddNotesPopup()">
+            <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/plus-math.png" alt="plus-math" />
+            <h4 class="text-dark">Add Note</h4>
+        </div>
+
+    </section>
+
+    <section class="row mt-4">
+        <ng-container *ngFor="let card of cards;let i=index">
+            <div class="col-md-4 col-sm-12">
+                <div class="card w-100 cards">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <h4 class="text-uppercase">{{card.status}}: {{card.count?card.count:0}} </h4>
+                            </div>
+                            <div class="col-7">
+                                {{card.count?(((card.count/notesArray.length)*100).toFixed(0))+'%':'0%'}}
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped" [ngClass]="card.class"
+                                        [ngStyle]="{ 'width':  (((card.count/notesArray.length)*100))+'%'}">
+                                        {{card.count}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4" *ngIf="notesArray">
+                            <ng-container *ngFor="let note of notesArray; let i= index">
+                                <div class="card mt-4"
+                                    [ngClass]="note.status === 'Completed' ? 'completed' : note.status === 'In Progress' ? 'inProgress' : note.status === 'To Do' ? 'toDo' : ''"
+                                    *ngIf="note.status == card.status">
+                                    <div class="card-body">
+                                        <div
+                                            style="display: flex; justify-content: space-between; align-items: center;">
+                                            <h6
+                                                [ngClass]="note.status === 'Completed' ? 'completed-moreInfo' : note.status === 'In Progress' ? 'inProgress-moreInfo' : note.status === 'To Do' ? 'toDo-moreInfo' : ''">
+                                                Change Status</h6>
+                                            <select class="form-control mt-2 w-75" style="cursor: pointer;"
+                                                (change)="changeStatus($event,note,i)">
+                                                <option selected>Current Status: {{note.status}}</option>
+                                                <option [value]="card.status" *ngFor="let card of cards">
+                                                    {{card.status}}
+                                                </option>
+                                            </select>
+
+
+                                        </div>
+
+                                        <h3 class="mt-2">{{note?.title}}</h3>
+                                        <p class="mt-2"><span style="font-weight: bold;">Start Date:
+                                            </span>{{note.startDate}}</p>
+                                        <p class="mt-2"><span style="font-weight: bold;">End Date:
+                                            </span>{{note.endDate}}</p>
+                                        <div *ngIf="note?.showNote">
+                                            <p class="mt-2" style="font-weight: bold;">Description</p>
+
+                                            <p class="mt-2" style="white-space: pre-line;">
+                                                {{note?.description}}</p>
+                                        </div>
+                                        <p style="text-decoration: underline;cursor: pointer;"
+                                            [ngClass]="note.status === 'Completed' ? 'completed-moreInfo' : note.status === 'In Progress' ? 'inProgress-moreInfo' : note.status === 'To Do' ? 'toDo-moreInfo' : ''"
+                                            (click)="moreInfo(note,i)">{{note?.['showNote']?'Hide':'More Info'}}</p>
+
+
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </section>
+
+</div>
+
+
+<ng-container *ngIf="addNotesStatus">
+    <app-popup (cancelButtonClickStatus)="closePopup($event)" (addedNote)="addNotes($event)"></app-popup>
+</ng-container>
