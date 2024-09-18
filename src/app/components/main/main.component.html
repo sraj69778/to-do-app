@@ -16,7 +16,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
-                                <h4 class="text-uppercase">{{card.status}}: {{card.count?card.count:0}} </h4>
+                                <h4 class="text-uppercase"
+                                    [ngClass]="card.status === 'Completed' ? 'completed-moreInfo' : card.status === 'In Progress' ? 'inProgress-moreInfo' : card.status === 'To Do' ? 'toDo-moreInfo' : ''">
+                                    {{card.status}}: {{card.count?card.count:0}} </h4>
                             </div>
                             <div class="col-7">
                                 {{card.count?(((card.count/notesArray.length)*100).toFixed(0))+'%':'0%'}}
