@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit, AfterViewInit {
+export class MainComponent implements OnInit {
 
   popUpState: string = '';
   noteToShow: any;
@@ -61,8 +61,6 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.countToDo = 0;
     this.countCompleted = 0;
     this.notesArray.forEach((item: any, index: number) => {
-      console.log('index', index);
-
       if (item.status == 'In Progress') {
         this.countInProgress++;
       }
@@ -92,12 +90,10 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   closePopup(event: any) {
-    console.log('IN MAIN', event);
     this.addNotesStatus = event;
   }
 
   changeStatus(event: any, obj: any, i: number) {
-    console.log(obj, i, event.target.value);
     let currentStatus = event.target.value
     this.notesArray[i].status = currentStatus
     this.setWidth();
@@ -113,17 +109,11 @@ export class MainComponent implements OnInit, AfterViewInit {
     else {
       this.notesArray[i]['showNote'] = false;
     }
-    // return this.notesArray[i]['showNote']
-    // this.noteToShow = note;
-    // this.addNotesStatus = true;
 
   }
 
   ngOnInit() {
     this.setWidth();
-
-  }
-  ngAfterViewInit(): void {
 
   }
 

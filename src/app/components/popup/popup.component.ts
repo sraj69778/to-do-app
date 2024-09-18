@@ -12,8 +12,6 @@ export class PopupComponent implements OnInit {
 
   @Output() cancelButtonClickStatus: EventEmitter<boolean> = new EventEmitter();
   @Output() addedNote: EventEmitter<any> = new EventEmitter();
-  @Input() popUpState: string = ''
-  @Input() noteToShow: any;
 
   addNotesForm!: FormGroup;
   notesStatus = [{
