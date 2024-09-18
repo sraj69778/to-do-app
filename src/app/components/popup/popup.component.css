@@ -35,9 +35,24 @@ small {
     color: red;
 }
 
-input[type="submit"]{
+input[type="submit"] {
     padding: 1%;
     width: 20%;
     cursor: pointer;
     margin-top: 30px;
+}
+
+@media (max-width: 800px) {
+    input[type="submit"] {
+        padding: 1%;
+        width: 50%;
+        cursor: pointer;
+        margin-top: 30px;
+    }
+
+    .add-note-form {
+        z-index: 1000;
+        width: 100%;
+        padding-bottom: 3%;
+    }
 }
