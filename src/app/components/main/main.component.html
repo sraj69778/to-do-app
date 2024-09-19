@@ -12,7 +12,8 @@
     <section class="row mt-4">
         <ng-container *ngFor="let card of cards;let i=index">
             <div class="col-md-4 col-sm-12 mt-2">
-                <div class="card w-100 cards" [ngClass]="card.status === 'Completed' ? 'completed' : card.status === 'In Progress' ? 'inProgress' : card.status === 'To Do' ? 'toDo' : ''">
+                <div class="card w-100 cards"
+                    [ngClass]="card.status === 'Completed' ? 'completed' : card.status === 'In Progress' ? 'inProgress' : card.status === 'To Do' ? 'toDo' : ''">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
@@ -38,9 +39,6 @@
                                     <div class="card-body">
                                         <div
                                             style="display: flex; justify-content: space-between; align-items: center;">
-                                            <h6
-                                                [ngClass]="note.status === 'Completed' ? 'completed-moreInfo' : note.status === 'In Progress' ? 'inProgress-moreInfo' : note.status === 'To Do' ? 'toDo-moreInfo' : ''">
-                                                Change Status</h6>
                                             <select class="form-control mt-2 w-75" style="cursor: pointer;"
                                                 (change)="changeStatus($event,note,i)">
                                                 <option selected>Current Status: {{note.status}}</option>
@@ -48,8 +46,11 @@
                                                     {{card.status}}
                                                 </option>
                                             </select>
-
-
+                                            <div (click)="deleteNote(i)">
+                                                <img width="40" height="40"
+                                                    src="https://img.icons8.com/color/48/delete-forever.png"
+                                                    alt="delete-forever" />
+                                            </div>
                                         </div>
 
                                         <h3 class="mt-2">{{note?.title}}</h3>

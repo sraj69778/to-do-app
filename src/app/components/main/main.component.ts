@@ -111,10 +111,16 @@ export class MainComponent implements OnInit {
     }
 
   }
+  deleteNote(i: number) {
+    let confirmDelete = confirm("Are you sure want to delete the note ?");
+    if (confirmDelete ) {
+      this.notesArray.splice(i, 1);
+      this.setWidth();
+    }
+  }
 
   ngOnInit() {
     this.setWidth();
-
   }
 
 }
