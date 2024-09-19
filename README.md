@@ -1,27 +1,20 @@
-# ToDoApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.6.
 
-## Development server
+About the app:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. This application is a to do app. It is responsive as well.
+2. You can add note by clicking on 'Add Note' button. While adding note you can select start date and end date, task status (to do, in progress and completed) as well.
+3. Each added note is shown in corresponding status section, like note with 'in progress' status will be shown inside 'In Progress' section with different colour (like border,etc).
+4. You can delete the note as well.
+5. Note progress is also displayed in the form of progress bar, which shows the percentage.
+   a. Suppose the total records are 15.
+   b. To do: 6 ((6/15)*100 = 40%), In Progress: 6 (40%) , Completed: 3 (20%)
+6. Note: 
+   Your notes are not being saved anywhere, so when you refresh the page the notes will not the there.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Connect with me:
+Sumit Raj
+Mail: sraj69778@gmail.com
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
